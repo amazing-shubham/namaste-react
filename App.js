@@ -1,50 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement(
-    "div",
-    { id: "parent" },
-    [
-        React.createElement(
-            "div",
-            { id: "child1" },
-            [
-                React.createElement(
-                    "h1",
-                    {},
-                    "I am H1 Tag"
-                ),
-                React.createElement(
-                    "h2",
-                    {},
-                    "I am H2 Tag"
-                )
-            ]
-        ),
-        React.createElement(
-            "div",
-            { id: "child2" },
-            [
-                React.createElement(
-                    "h1",
-                    {},
-                    "I am H1 Tag"
-                ),
-                React.createElement(
-                    "h2",
-                    {},
-                    "I am H2 Tag"
-                )
-            ]
-        )
-    ]
-);
+//JSX => React.createElement(JS Object) by BABEL => After rendering => HTMLElement
 
-const heading = React.createElement
-    (
-        "h1",
-        { id: "heading" },
-        "Hello World from React!"
-    );
+// React Element
+const jsxHeading = <h2 className="head">Namaste Javascript by JSX !!</h2>;
+
+//Title Component
+
+const TitleComponent = function () {
+  return <h1 className="title">React from Title Component</h1>;
+};
+
+// React Functional Component
+// Add Title Component in a multiple ways
+const HeadingComponent = () => (
+  <div id="container">
+    <TitleComponent />
+    <TitleComponent></TitleComponent>
+    {TitleComponent()}
+    {jsxHeading}
+    <h1 className="heading">Namaste React from Functional Component</h1>
+  </div>
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+//root.render(jsxHeading);
+root.render(<HeadingComponent />);
