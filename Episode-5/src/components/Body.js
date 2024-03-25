@@ -1,18 +1,21 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
+import { useState } from "react";
 
 const Body = () => {
-  let listOfRestaurant = resList;
+  const [listOfRestaurant, setListOfRestaurant] = useState(resList);
+  //let listOfRestaurant = resList;
   return (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
-            listOfRestaurant = listOfRestaurant.filter(
-              (x) => x.info.avgRating > 4.5
+            const filteredList = listOfRestaurant.filter(
+              (x) => x.info.avgRating > 4.3
             );
-            console.log(listOfRestaurant);
+            setListOfRestaurant(filteredList);
+            console.log(filteredList);
           }}
         >
           Top Rated Restaurant
