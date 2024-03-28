@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
     fetchData();
@@ -15,6 +16,9 @@ const Body = () => {
     );
     const json = await data.json();
     setListOfRestaurant(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+    setFilteredRestaurant(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
@@ -34,10 +38,10 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const filteredRestaurant = listOfRestaurant.filter((res) =>
+              const x = listOfRestaurant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setListOfRestaurant(filteredRestaurant);
+              setFilteredRestaurant(x);
             }}
           >
             Search
@@ -57,7 +61,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurant.map((restaurant) => (
+        {filteredRestaurant.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resList={restaurant} />
         ))}
       </div>
