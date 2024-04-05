@@ -70,5 +70,8 @@
     border: 1px solid black;
     cursor: pointer;
     background-color: #f0f0f0;
-    width: 250px;
+}
+.user-img {
+    width: 10%;
+    height: 10%;
 }
