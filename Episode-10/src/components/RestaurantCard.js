@@ -4,12 +4,8 @@ const RestaurantCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resList?.info;
   return (
-    <div className="res-card">
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src={CDN_URL + cloudinaryImageId}
-      />
+    <div className="m-4 p-4 w-56 bg-gray-200">
+      <img alt="res-logo" src={CDN_URL + cloudinaryImageId} />
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating} stars</h4>
